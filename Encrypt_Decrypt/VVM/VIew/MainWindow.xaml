@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Encrypt_Decrypt"
+        xmlns:local="clr-namespace:Encrypt_Decrypt.VVM.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Background="#283044" Height="1080" Width="1920">
     <StackPanel>
@@ -35,8 +35,18 @@
                 <ColumnDefinition  Width="*"></ColumnDefinition>
                 <ColumnDefinition  Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
+            
+            <ComboBox Name="comboBoxEncrypt" Grid.Column="2" Width="200" HorizontalAlignment="Left" Margin="100,10,0,10">
+                <ComboBoxItem Content="Caesar cipher" />
+            </ComboBox>
 
-            <Button Name="BtnEncrypt" Width ="200" Grid.Column="2" Margin="0,10,10,10">ENCODE</Button>
+            <ComboBox Name="comboBoxLangEncrypt" Grid.Column="2" Width="200" HorizontalAlignment="Center" Margin="0,10,0,10">
+                <ComboBoxItem Content="polish" />
+                <ComboBoxItem Content="polishXVQ" />
+                <ComboBoxItem Content="english" />
+            </ComboBox>
+
+            <Button Name="BtnEncrypt" Width ="200" Grid.Column="2"  Margin="0,10,100,10" HorizontalAlignment="Right">ENCODE</Button>
         </Grid>
 
         <Grid>
@@ -53,7 +63,18 @@
                 <ColumnDefinition  Width="*"></ColumnDefinition>
                 <ColumnDefinition  Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Name="BtnDecrypt" Width ="200" Grid.Column="2" Margin="0,10,10,10">Decode</Button>
+
+            <ComboBox Name="comboBoxDecrypt" Grid.Column="2" Width="200" HorizontalAlignment="Left" Margin="100,10,0,10">
+                <ComboBoxItem Content="Caesar cipher" />
+            </ComboBox>
+            
+            <ComboBox Name="comboBoxLangDecrypt" Grid.Column="2" Width="200" HorizontalAlignment="Center" Margin="0,10,0,10">
+                <ComboBoxItem Content="polish" />
+                <ComboBoxItem Content="polishXVQ" />
+                <ComboBoxItem Content="english" />
+            </ComboBox>
+
+            <Button Name="BtnDecrypt" Width ="200" Grid.Column="2" Margin="0,10,100,10" HorizontalAlignment="Right">DECODE</Button>
         </Grid>
 
 

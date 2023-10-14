@@ -4,11 +4,9 @@ E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\bin\Debug\net6.0-windows\Encrypt_D
 E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\bin\Debug\net6.0-windows\Encrypt_Decrypt.dll
 E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\bin\Debug\net6.0-windows\Encrypt_Decrypt.pdb
 E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\Encrypt_Decrypt.csproj.AssemblyReference.cache
-E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\MainWindow.g.cs
 E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\App.g.cs
 E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\Encrypt_Decrypt_MarkupCompile.cache
 E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\Encrypt_Decrypt_MarkupCompile.lref
-E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\MainWindow.baml
 E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\Encrypt_Decrypt.g.resources
 E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\Encrypt_Decrypt.GeneratedMSBuildEditorConfig.editorconfig
 E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\Encrypt_Decrypt.AssemblyInfoInputs.cache
@@ -19,3 +17,5 @@ E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\refint\En
 E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\Encrypt_Decrypt.pdb
 E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\Encrypt_Decrypt.genruntimeconfig.cache
 E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\ref\Encrypt_Decrypt.dll
+E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\VVM\VIew\MainWindow.g.cs
+E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\VVM\VIew\MainWindow.baml

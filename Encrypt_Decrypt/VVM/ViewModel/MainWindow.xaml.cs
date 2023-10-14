@@ -24,5 +24,22 @@ namespace Encrypt_Decrypt
         {
             InitializeComponent();
         }
+
+        #region ENCRYPTION
+        private void BtnEncrypt_Click(object sender, RoutedEventArgs e)
+        {
+            string inputToEncrypt = txtInputEncrypt.Text;
+            string encryptingAlgorithm = comboBoxEncrypt.Text;
+        }
+
+        #endregion
+
+        #region DECRYPTION
+        private void BtnDecrypt_Click(object sender, RoutedEventArgs e)
+        {
+            string inputToDecrypt = txtInputDecrypt.Text;
+            string decryptingAlgorithm = comboBoxDecrypt.Text;
+        }
+        #endregion
     }
 }
