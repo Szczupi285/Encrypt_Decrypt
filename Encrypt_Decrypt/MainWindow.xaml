@@ -1,0 +1,63 @@
+﻿<Window x:Class="Encrypt_Decrypt.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Encrypt_Decrypt"
+        mc:Ignorable="d"
+        Title="MainWindow" Background="#283044" Height="1080" Width="1920">
+    <StackPanel>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  Width="*"></ColumnDefinition>
+                <ColumnDefinition  Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0"  HorizontalAlignment="Center" FontSize="50" Margin="0,10,0,10" Foreground="#EBF5EE">RESULT</TextBlock>
+            <TextBlock Grid.Column="1"  HorizontalAlignment="Center" FontSize="50" Margin="0,10,0,10" Foreground="#EBF5EE">INPUT</TextBlock>
+
+        </Grid>
+        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  Width="*"></ColumnDefinition>
+                <ColumnDefinition  Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBox Name="txtInputEncrypt" Grid.Column="1"  Width="800" Height="300" Margin="0,10,10,10" BorderBrush="#78A1BB" BorderThickness="3" Background="#EBF5EE" TextWrapping="Wrap"/>
+
+            <Border BorderBrush="#78A1BB" Grid.Column="0" BorderThickness="3" Width="800" Height="300">
+                <TextBlock Name="Result" Background="#EBF5EE" Grid.Column="0" Width="800" Height="300"  TextWrapping="Wrap"></TextBlock>
+            </Border>
+        </Grid>
+        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  Width="*"></ColumnDefinition>
+                <ColumnDefinition  Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button Name="BtnEncrypt" Width ="200" Grid.Column="2" Margin="0,10,10,10">ENCODE</Button>
+        </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  Width="*"></ColumnDefinition>
+                <ColumnDefinition  Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBox Name="txtInputDecrypt"  Grid.Column="1"  Width="800" Height="300" Margin="0,10,10,10" BorderBrush="#78A1BB" BorderThickness="3" Background="#EBF5EE" TextWrapping="Wrap"/>
+
+        </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  Width="*"></ColumnDefinition>
+                <ColumnDefinition  Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Name="BtnDecrypt" Width ="200" Grid.Column="2" Margin="0,10,10,10">Decode</Button>
+        </Grid>
+
+
+
+    </StackPanel>
+    
+</Window>

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Encrypt_Decrypt/1.0.0": {
+        "runtime": {
+          "Encrypt_Decrypt.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Encrypt_Decrypt/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
