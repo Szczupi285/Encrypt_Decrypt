@@ -7,6 +7,14 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="VVM\ViewModel\CaesarKey.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="VVM\VIew\CaesarKey.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="VVM\VIew\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>

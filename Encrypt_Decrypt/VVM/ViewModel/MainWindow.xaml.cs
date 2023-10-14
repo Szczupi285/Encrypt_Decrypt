@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Encrypt_Decrypt.VVM.VIewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,16 +21,38 @@ namespace Encrypt_Decrypt
     /// </summary>
     public partial class MainWindow : Window
     {
+        private CaesarKey caesarKey;
+
+        public string Key;
+
+        public string input;
+
+        public string Algorithm;
+
+        public string language;
         public MainWindow()
         {
             InitializeComponent();
+            caesarKey = new CaesarKey();
         }
 
         #region ENCRYPTION
         private void BtnEncrypt_Click(object sender, RoutedEventArgs e)
         {
-            string inputToEncrypt = txtInputEncrypt.Text;
-            string encryptingAlgorithm = comboBoxEncrypt.Text;
+            
+
+            input = txtInputEncrypt.Text;
+            Algorithm = comboBoxEncrypt.Text;
+            language = comboBoxLangEncrypt.Text;
+            
+            if(Algorithm == "Caesar cipher")
+                CaesarsKeyControl.Content = caesarKey;
+
+        }
+
+        public void hide()
+        {
+            CaesarsKeyControl.Content = null;
         }
 
         #endregion

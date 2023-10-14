@@ -3,12 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Encrypt_Decrypt.VVM.ViewModel"
+        xmlns:local="clr-namespace:Encrypt_Decrypt.VVM.ViewModel" 
         mc:Ignorable="d"
         Title="MainWindow" Background="#283044" Height="1080" Width="1920">
-    <StackPanel>
+    <Grid>
+        <ContentControl x:Name="CaesarsKeyControl" Panel.ZIndex="1" />
 
-        <Grid>
+        <StackPanel>
+            
+            <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition  Width="*"></ColumnDefinition>
                 <ColumnDefinition  Width="*"></ColumnDefinition>
@@ -46,7 +49,7 @@
                 <ComboBoxItem Content="english" />
             </ComboBox>
 
-            <Button Name="BtnEncrypt" Width ="200" Grid.Column="2"  Margin="0,10,100,10" HorizontalAlignment="Right">ENCODE</Button>
+                <Button Click="BtnEncrypt_Click" Name="BtnEncrypt" Width ="200" Grid.Column="2"  Margin="0,10,100,10" HorizontalAlignment="Right">ENCRYPT</Button>
         </Grid>
 
         <Grid>
@@ -74,11 +77,10 @@
                 <ComboBoxItem Content="english" />
             </ComboBox>
 
-            <Button Name="BtnDecrypt" Width ="200" Grid.Column="2" Margin="0,10,100,10" HorizontalAlignment="Right">DECODE</Button>
+                <Button  Name="BtnDecrypt" Width ="200" Grid.Column="2" Margin="0,10,100,10" HorizontalAlignment="Right">DECRYPT</Button>
         </Grid>
 
 
-
     </StackPanel>
-    
+    </Grid>
 </Window>

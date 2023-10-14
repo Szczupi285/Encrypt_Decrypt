@@ -19,3 +19,5 @@ E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\Encrypt_D
 E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\ref\Encrypt_Decrypt.dll
 E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\VVM\VIew\MainWindow.g.cs
 E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\VVM\VIew\MainWindow.baml
+E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\VVM\VIew\CaesarKey.g.cs
+E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\VVM\VIew\CaesarKey.baml

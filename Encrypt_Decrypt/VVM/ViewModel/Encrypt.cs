@@ -11,13 +11,13 @@ namespace Encrypt_Decrypt.VVM.ViewModel
 
     internal class Encrypt
     {
-        private string EncryptionAlgorithm { get; set; }
+        private string EncryptionAlgorithm { get; }
         
-        private string EncryptionKey { get; set; }
+        private string EncryptionKey { get; }
         
-        private string Input { get; set; }
+        private string Input { get; }
 
-        private string Language { get; set; }
+        private string Language { get; }
 
        
         
@@ -25,7 +25,7 @@ namespace Encrypt_Decrypt.VVM.ViewModel
         {
             EncryptionAlgorithm = algorithm;
             EncryptionKey = key;
-            Input = input;
+            Input = input.ToLower();
             Language = language;
         }
 
@@ -122,9 +122,9 @@ namespace Encrypt_Decrypt.VVM.ViewModel
                     {30, 'z'},
                     {31, 'ź'},
                     {32, 'ż'},
-                    {32, 'X'},
-                    {32, 'V'},
-                    {32, 'Q'},
+                    {33, 'X'},
+                    {34, 'V'},
+                    {35, 'Q'},
                 };
 
                 return dict;
@@ -177,7 +177,7 @@ namespace Encrypt_Decrypt.VVM.ViewModel
                     return encryptCaesarCipherInEnglish();
                 else if (encrypt.Language == "polish")
                     return encryptCaesarCipherInPolish();
-                else if (encrypt.Language == "polishXQV")
+                else if (encrypt.Language == "polishXVQ")
                     return encryptCaesarCipherInPolishXQV();
                 else
                     throw new ArgumentException("This language is not supported");
@@ -197,10 +197,24 @@ namespace Encrypt_Decrypt.VVM.ViewModel
 
         }
 
+        // consider creating two dictionaries relfecting eachother so one is <char,int> and second one is <int,char>
         private string encryptCaesarCipherInPolishXQV()
         {
-            throw new NotImplementedException();
+            Dictionary<int, char> dict = CreateDictionary("polishXVQ");
 
+            int encKey = Convert.ToInt32(EncryptionKey);
+
+            char[] letters = Input.Replace(" ", "").ToCharArray();
+            string result = "";
+
+            foreach (char letter in letters)
+            {
+                int key = dict.First(pair => pair.Value == letter).Key;
+                
+                result += dict[(key + encKey) % 34];
+            }
+
+            return result;
         }
 
     }
