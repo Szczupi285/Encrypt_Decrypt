@@ -36,10 +36,16 @@ namespace Encrypt_Decrypt
             caesarKey = new CaesarKey();
         }
 
+        public void hide()
+        {
+            CaesarsKeyControl.Content = null;
+        }
+
         #region ENCRYPTION
         private void BtnEncrypt_Click(object sender, RoutedEventArgs e)
         {
-            
+
+            caesarKey.IsEncryption = true;
 
             input = txtInputEncrypt.Text;
             Algorithm = comboBoxEncrypt.Text;
@@ -49,19 +55,21 @@ namespace Encrypt_Decrypt
                 CaesarsKeyControl.Content = caesarKey;
 
         }
-
-        public void hide()
-        {
-            CaesarsKeyControl.Content = null;
-        }
+        
 
         #endregion
 
         #region DECRYPTION
         private void BtnDecrypt_Click(object sender, RoutedEventArgs e)
         {
-            string inputToDecrypt = txtInputDecrypt.Text;
-            string decryptingAlgorithm = comboBoxDecrypt.Text;
+            caesarKey.IsEncryption = false;
+
+            input = txtInputDecrypt.Text;
+            Algorithm = comboBoxDecrypt.Text;
+            language = comboBoxLangDecrypt.Text;
+
+            if (Algorithm == "Caesar cipher")
+                CaesarsKeyControl.Content = caesarKey;
         }
         #endregion
     }

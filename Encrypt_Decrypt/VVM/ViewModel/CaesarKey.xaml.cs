@@ -22,12 +22,12 @@ namespace Encrypt_Decrypt.VVM.VIewModel
     /// </summary>
     public partial class CaesarKey : UserControl
     {
+        public bool IsEncryption { get; set; }
+
         public CaesarKey()
         {
             InitializeComponent();
         }
-
-
 
         private void CaesarsKey_Click(object sender, RoutedEventArgs e)
         {
@@ -41,10 +41,20 @@ namespace Encrypt_Decrypt.VVM.VIewModel
                 mainWindow.Key = keyInput.Text;
 
 
-                // encrypt using parents properties already set in BtnEncrypt_Click
-                Encrypt caesar = new Encrypt(mainWindow.Algorithm, mainWindow.Key,
+                // encrypt/decrypt using parents properties already set in BtnEncrypt_Click/BtnDecrypt_Click
+                if (IsEncryption == true)
+                {
+                    Encrypt caesar = new Encrypt(mainWindow.Algorithm, mainWindow.Key,
                     mainWindow.input, mainWindow.language);
-                mainWindow.Result.Text = caesar.performEncryption(caesar);
+                    mainWindow.Result.Text = caesar.performEncryption(caesar);
+                }
+                else
+                {
+                    Decrypt caesar = new Decrypt(mainWindow.Algorithm, mainWindow.Key,
+                    mainWindow.input, mainWindow.language);
+                    mainWindow.Result.Text = caesar.performDecryption(caesar);
+                }
+                    
 
 
 
