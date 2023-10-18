@@ -1,4 +1,4 @@
-﻿using Encrypt_Decrypt.VVM.VIewModel;
+﻿using Encrypt_Decrypt.VVM.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +23,8 @@ namespace Encrypt_Decrypt
     {
         private CaesarKey caesarKey;
 
+        private PolybiusKey polybiusKey;
+
         public string Key;
 
         public string input;
@@ -34,6 +36,7 @@ namespace Encrypt_Decrypt
         {
             InitializeComponent();
             caesarKey = new CaesarKey();
+            polybiusKey = new PolybiusKey();
         }
 
         public void hide()
@@ -42,6 +45,8 @@ namespace Encrypt_Decrypt
         }
 
         #region ENCRYPTION
+
+        // properties are later passed to keyViewModel
         private void BtnEncrypt_Click(object sender, RoutedEventArgs e)
         {
 
@@ -53,13 +58,20 @@ namespace Encrypt_Decrypt
             
             if(Algorithm == "Caesar cipher")
                 CaesarsKeyControl.Content = caesarKey;
+            if (Algorithm == "Polybius cipher")
+            {
+                PolybiusKeyControl.Content = polybiusKey;
+                polybiusKey.GeneratePolybiusSquare();
+            }
+
 
         }
-        
+
 
         #endregion
 
         #region DECRYPTION
+        // properties are later passed to keyViewModel
         private void BtnDecrypt_Click(object sender, RoutedEventArgs e)
         {
             caesarKey.IsEncryption = false;
@@ -70,6 +82,8 @@ namespace Encrypt_Decrypt
 
             if (Algorithm == "Caesar cipher")
                 CaesarsKeyControl.Content = caesarKey;
+            if (Algorithm == "Polybius cipher")
+                PolybiusKeyControl.Content = polybiusKey;
         }
         #endregion
     }

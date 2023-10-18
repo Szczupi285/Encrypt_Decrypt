@@ -38,7 +38,7 @@ namespace Encrypt_Decrypt.VVM.ViewModel
                 throw new ArgumentException("This encryption algorithm is not supported");
         }
 
-
+        
         private string decryptCaesarCipher(string language) 
         {
             Dictionary<int, char> dict = CreateDictionary(language);

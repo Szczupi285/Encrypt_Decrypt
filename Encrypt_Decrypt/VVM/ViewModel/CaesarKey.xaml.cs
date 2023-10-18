@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using Encrypt_Decrypt;
 using Encrypt_Decrypt.VVM.ViewModel;
 
-namespace Encrypt_Decrypt.VVM.VIewModel
+namespace Encrypt_Decrypt.VVM.ViewModel
 {
     /// <summary>
     /// Logika interakcji dla klasy CaesarKey.xaml
