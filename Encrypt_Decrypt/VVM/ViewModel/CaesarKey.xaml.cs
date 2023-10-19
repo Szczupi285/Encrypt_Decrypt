@@ -58,7 +58,7 @@ namespace Encrypt_Decrypt.VVM.ViewModel
 
 
 
-                mainWindow!.hide();
+                mainWindow!.CaesarsKeyControl.Content = null;
             }
            
         }

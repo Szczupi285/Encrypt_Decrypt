@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Encrypt_Decrypt.VVM.ViewModel
 {
-    internal class Decrypt : CreateDictionaries
+    internal class Decrypt : LanguageOperations
     {
 
         private string DecryptionAlgorithm { get; }

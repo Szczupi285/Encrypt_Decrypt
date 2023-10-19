@@ -25,13 +25,13 @@ namespace Encrypt_Decrypt
 
         private PolybiusKey polybiusKey;
 
-        public string Key;
+        public string? Key;
 
-        public string input;
+        public string? input;
 
-        public string Algorithm;
+        public string? Algorithm;
 
-        public string language;
+        public string? language;
         public MainWindow()
         {
             InitializeComponent();
@@ -42,6 +42,7 @@ namespace Encrypt_Decrypt
         public void hide()
         {
             CaesarsKeyControl.Content = null;
+            PolybiusKeyControl.Content = null;
         }
 
         #region ENCRYPTION

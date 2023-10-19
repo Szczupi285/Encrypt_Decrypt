@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using Encrypt_Decrypt.VVM.ViewModel;
 using System.Windows.Shapes;
 
 namespace Encrypt_Decrypt.VVM.ViewModel
@@ -21,14 +22,16 @@ namespace Encrypt_Decrypt.VVM.ViewModel
     /// </summary>
     public partial class PolybiusKey : UserControl
     {
+
+        public TextBox[,] TextBoxes { get; set; }
+
         public PolybiusKey()
         {
             InitializeComponent();
 
-
-
-          
         }
+
+        
 
         public void GeneratePolybiusSquare()
         {
@@ -40,50 +43,103 @@ namespace Encrypt_Decrypt.VVM.ViewModel
             RowDefinition rowDefinition = new RowDefinition();
             rowDefinition.Height = GridLength.Auto;
 
-            // find two divisors that are nearest eachother this numbers are for loops
+            (int, int) multipliers = LanguageOperations.GetClosestMultipliers(mainWindow.language);
 
-            if (mainWindow.language == "polish")
-            {
+            TextBoxes = new TextBox[multipliers.Item1, multipliers.Item2];
+           
 
-
-                for (int i = 0; i < 8; i++)
+                for (int i = 0; i < multipliers.Item1 + 1; i++)
                 {
                     PolybiusSquare.ColumnDefinitions.Add(new ColumnDefinition());
 
-                    for (int j = 0; j < 4; j++)
+                    for (int j = 0; j < multipliers.Item2 + 1; j++)
                     {
                         PolybiusSquare.RowDefinitions.Add(new RowDefinition());
 
-                        TextBox textBox = new TextBox();
-                        textBox.MaxLength = 2;
-                        textBox.FontSize = 25;
 
-                        Frame frame = new Frame();
-                        frame.Content = textBox;
-                        frame.Width = 100;
-                        frame.Height = 50;
-                        frame.BorderBrush = new SolidColorBrush(Color.FromRgb(112, 112, 112));
-                        frame.Margin = new Thickness(10);
-                        frame.BorderThickness = new Thickness(3);
+                        if(i == 0)
+                        {
+                            TextBlock textBlock = new TextBlock();
+                            textBlock.Text = $"{j}";
+                            textBlock.FontSize = 25;
+
+                            Frame frame = new Frame();
+                            frame.Content = textBlock;
+                            frame.Width = 100;
+                            frame.Height = 50;
+                            frame.BorderBrush = new SolidColorBrush(Color.FromRgb(112, 112, 112));
+                            frame.Margin = new Thickness(10);
+                            frame.BorderThickness = new Thickness(3);
+
+
+                            PolybiusSquare.Children.Add(frame);
+
+
+                            Grid.SetColumn(frame, i);
+                            Grid.SetRow(frame, j);
+                        }
+                        else if(j == 0)
+                        {
+                            TextBlock textBlock = new TextBlock();
+                            textBlock.Text = $"{i}";
+                            textBlock.FontSize = 25;
+
+                            Frame frame = new Frame();
+                            frame.Content = textBlock;
+                            frame.Width = 100;
+                            frame.Height = 50;
+                            frame.BorderBrush = new SolidColorBrush(Color.FromRgb(112, 112, 112));
+                            frame.Margin = new Thickness(10);
+                            frame.BorderThickness = new Thickness(3);
+
+
+                            PolybiusSquare.Children.Add(frame);
+
+
+                            Grid.SetColumn(frame, i);
+                            Grid.SetRow(frame, j);
+                        }
+                        else
+                        {
+                            TextBox textBox = new TextBox();
+                            textBox.MaxLength = 2;
+                            textBox.FontSize = 25;
+
+                            // store the reference of a current textbox in 2d array of textboxes
+                            TextBoxes[i - 1, j - 1] = textBox;
+
+                            Frame frame = new Frame();
+                            frame.Content = textBox;
+                            frame.Width = 100;
+                            frame.Height = 50;
+                            frame.BorderBrush = new SolidColorBrush(Color.FromRgb(112, 112, 112));
+                            frame.Margin = new Thickness(10);
+                            frame.BorderThickness = new Thickness(3);
 
 
 
-                        PolybiusSquare.Children.Add(frame);
+                            PolybiusSquare.Children.Add(frame);
 
 
-                        Grid.SetColumn(frame, i);
-                        Grid.SetRow(frame, j);
+                            Grid.SetColumn(frame, i);
+                            Grid.SetRow(frame, j);
+                        }
+                     
                     }
 
                 }
 
-               
-            }
         }
 
         private void PolybiusKey_Click(object sender, RoutedEventArgs e)
         {
-         
+
+
+            var mainWindow = Window.GetWindow(this) as MainWindow;
+
+            mainWindow.PolybiusKeyControl.Content = null;
+
+
         }
     }
 }

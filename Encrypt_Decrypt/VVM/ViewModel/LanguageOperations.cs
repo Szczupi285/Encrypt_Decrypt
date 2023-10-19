@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace Encrypt_Decrypt.VVM.ViewModel
 {
-    public class CreateDictionaries
+    public class LanguageOperations
     {
+
+
+        public const int polishLetterCount = 32;
+        public const int polishXVQLetterCount = 35;
+        public const int englishLetterCount = 26;
 
         /// <summary>
         /// Creates a dictionary with integer keys and character values based on the specified type.
@@ -143,6 +148,40 @@ namespace Encrypt_Decrypt.VVM.ViewModel
             }
             else
                 throw new ArgumentException("The type you provided is incorrect");
+
+        }
+
+
+        public static (int x, int y) GetClosestMultipliers(string language)
+        {
+            int languageLettersCount = 0;
+
+            if (language == "polish")
+                languageLettersCount = polishLetterCount;
+            else if (language == "polishXVQ")
+                languageLettersCount = polishXVQLetterCount;
+            else if (language == "english")
+                languageLettersCount = englishLetterCount;
+            
+
+
+            int root = (int)Math.Sqrt(languageLettersCount);
+
+            int firstMultiplier = languageLettersCount;
+            int secondMultiplier = 1;
+
+            for(int i = root; i > 0; i--)
+            {
+                if(languageLettersCount % i == 0)
+                {
+                     firstMultiplier = languageLettersCount / i;
+                     secondMultiplier = i;
+
+                     return (firstMultiplier, secondMultiplier);
+                }
+            }
+            return (firstMultiplier, secondMultiplier);
+
 
         }
     }
