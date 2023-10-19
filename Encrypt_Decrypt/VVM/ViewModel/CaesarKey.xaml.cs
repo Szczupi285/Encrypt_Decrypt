@@ -22,7 +22,8 @@ namespace Encrypt_Decrypt.VVM.ViewModel
     /// </summary>
     public partial class CaesarKey : UserControl
     {
-        public bool IsEncryption { get; set; }
+       
+        private string Key { get; set; }
 
         public CaesarKey()
         {
@@ -38,19 +39,19 @@ namespace Encrypt_Decrypt.VVM.ViewModel
             {
                 // gets the parent reference
                 var mainWindow = Window.GetWindow(this) as MainWindow;
-                mainWindow.Key = keyInput.Text;
+                Key = keyInput.Text;
 
 
                 // encrypt/decrypt using parents properties already set in BtnEncrypt_Click/BtnDecrypt_Click
-                if (IsEncryption == true)
+                if (mainWindow.IsEncryption == true)
                 {
-                    Encrypt caesar = new Encrypt(mainWindow.Algorithm, mainWindow.Key,
+                    Encrypt caesar = new Encrypt(mainWindow.Algorithm, Key,
                     mainWindow.input, mainWindow.language);
                     mainWindow.Result.Text = caesar.performEncryption(caesar);
                 }
                 else
                 {
-                    Decrypt caesar = new Decrypt(mainWindow.Algorithm, mainWindow.Key,
+                    Decrypt caesar = new Decrypt(mainWindow.Algorithm, Key,
                     mainWindow.input, mainWindow.language);
                     mainWindow.Result.Text = caesar.performDecryption(caesar);
                 }

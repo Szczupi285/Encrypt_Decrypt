@@ -25,13 +25,13 @@ namespace Encrypt_Decrypt
 
         private PolybiusKey polybiusKey;
 
-        public string? Key;
-
         public string? input;
 
         public string? Algorithm;
 
         public string? language;
+
+        public bool IsEncryption;
         public MainWindow()
         {
             InitializeComponent();
@@ -51,19 +51,29 @@ namespace Encrypt_Decrypt
         private void BtnEncrypt_Click(object sender, RoutedEventArgs e)
         {
 
-            caesarKey.IsEncryption = true;
-
-            input = txtInputEncrypt.Text;
-            Algorithm = comboBoxEncrypt.Text;
-            language = comboBoxLangEncrypt.Text;
-            
-            if(Algorithm == "Caesar cipher")
-                CaesarsKeyControl.Content = caesarKey;
-            if (Algorithm == "Polybius cipher")
+            if(!String.IsNullOrEmpty(txtInputEncrypt.Text) && !String.IsNullOrEmpty(comboBoxEncrypt.Text) &
+               !String.IsNullOrEmpty(comboBoxLangEncrypt.Text))
             {
-                PolybiusKeyControl.Content = polybiusKey;
-                polybiusKey.GeneratePolybiusSquare();
+                IsEncryption = true;
+
+                input = txtInputEncrypt.Text;
+                Algorithm = comboBoxEncrypt.Text;
+                language = comboBoxLangEncrypt.Text;
+
+                if (Algorithm == "Caesar cipher")
+                    CaesarsKeyControl.Content = caesarKey;
+                if (Algorithm == "Polybius cipher")
+                {
+                    PolybiusKeyControl.Content = polybiusKey;
+                    polybiusKey.GeneratePolybiusSquare();
+                }
             }
+            else
+            { }
+
+                
+
+            
 
 
         }
@@ -75,16 +85,27 @@ namespace Encrypt_Decrypt
         // properties are later passed to keyViewModel
         private void BtnDecrypt_Click(object sender, RoutedEventArgs e)
         {
-            caesarKey.IsEncryption = false;
 
-            input = txtInputDecrypt.Text;
-            Algorithm = comboBoxDecrypt.Text;
-            language = comboBoxLangDecrypt.Text;
+            if (!String.IsNullOrEmpty(txtInputDecrypt.Text) && !String.IsNullOrEmpty(comboBoxDecrypt.Text) &&
+               !String.IsNullOrEmpty(comboBoxLangDecrypt.Text))
+            {
 
-            if (Algorithm == "Caesar cipher")
-                CaesarsKeyControl.Content = caesarKey;
-            if (Algorithm == "Polybius cipher")
-                PolybiusKeyControl.Content = polybiusKey;
+                IsEncryption = false;
+
+                input = txtInputDecrypt.Text;
+                Algorithm = comboBoxDecrypt.Text;
+                language = comboBoxLangDecrypt.Text;
+
+                if (Algorithm == "Caesar cipher")
+                    CaesarsKeyControl.Content = caesarKey;
+                if (Algorithm == "Polybius cipher")
+                {
+                    PolybiusKeyControl.Content = polybiusKey;
+                    polybiusKey.GeneratePolybiusSquare();
+                }
+            }
+            else 
+            { }
         }
         #endregion
     }

@@ -102,8 +102,17 @@ namespace Encrypt_Decrypt.VVM.ViewModel
                         else
                         {
                             TextBox textBox = new TextBox();
-                            textBox.MaxLength = 2;
+                            textBox.MaxLength = 1;
                             textBox.FontSize = 25;
+                            textBox.Text = "";
+                            
+                            if(mainWindow.language == "polish")
+                                textBox.PreviewTextInput += InputValidation.TextBox_PreviewTextInputPolish;
+                            else if(mainWindow.language == "polishXVQ")
+                                textBox.PreviewTextInput += InputValidation.TextBox_PreviewTextInputPolishXVQ;
+                            else if(mainWindow.language == "english")
+                                textBox.PreviewTextInput += InputValidation.TextBox_PreviewTextInputEnglish;
+
 
                             // store the reference of a current textbox in 2d array of textboxes
                             TextBoxes[i - 1, j - 1] = textBox;
@@ -133,11 +142,44 @@ namespace Encrypt_Decrypt.VVM.ViewModel
 
         private void PolybiusKey_Click(object sender, RoutedEventArgs e)
         {
+            bool isFilled = false;
+
+           foreach(TextBox s in TextBoxes)
+            {
+                if (String.IsNullOrEmpty(s.Text))
+                {
+                    isFilled = false;
+                    break;
+                }
+                else
+                    isFilled = true;
+                   
+            }
+
 
 
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
-            mainWindow.PolybiusKeyControl.Content = null;
+            if(mainWindow.IsEncryption == true && isFilled == true)
+            {
+                Encrypt Polybius = new Encrypt(mainWindow.Algorithm, TextBoxes,
+                mainWindow.input, mainWindow.language);
+                mainWindow.Result.Text = Polybius.performEncryption(Polybius);
+                mainWindow.PolybiusKeyControl.Content = null;
+            }
+            else if(isFilled == true)
+            {
+                Decrypt Polybius = new Decrypt(mainWindow.Algorithm, TextBoxes,
+                mainWindow.input, mainWindow.language);
+                mainWindow.Result.Text = Polybius.performDecryption(Polybius);
+                mainWindow.PolybiusKeyControl.Content = null;
+            }
+            else
+            { }
+           
+
+
+
 
 
         }

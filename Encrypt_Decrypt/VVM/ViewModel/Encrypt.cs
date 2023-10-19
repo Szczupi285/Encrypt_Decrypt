@@ -50,7 +50,7 @@ namespace Encrypt_Decrypt.VVM.ViewModel
             }
             else if(encrypt.EncryptionAlgorithm == "Polybius cipher")
             {
-                throw new NotImplementedException();
+                return encryptPolybiusCipher(encrypt.Language);
             }
             else 
                 throw new ArgumentException("This encryption algorithm is not supported");
@@ -81,13 +81,20 @@ namespace Encrypt_Decrypt.VVM.ViewModel
 
         }
 
-        private string encryptPolybiusCipher(TextBox[,] textBoxes)
+        // prime numbers swap
+        private string encryptPolybiusCipher(string language)
         {
 
 
-            throw new NotImplementedException();
+            Dictionary<char, string> dict = LanguageOperations.PolybiusDictionary(TextBoxes);
+            string result = "";
 
+            foreach(char letter in Input)
+            {
+                result += dict[letter];
+            }
 
+            return result;
         }
 
 

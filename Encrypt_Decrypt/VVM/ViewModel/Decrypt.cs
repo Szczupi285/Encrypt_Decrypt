@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Encrypt_Decrypt.VVM.ViewModel
 {
@@ -13,6 +14,7 @@ namespace Encrypt_Decrypt.VVM.ViewModel
 
         private string DecryptionKey { get; }
 
+        private TextBox[,] TextBoxes { get; }
         private string Input { get; }
 
         private string Language { get; }
@@ -21,6 +23,14 @@ namespace Encrypt_Decrypt.VVM.ViewModel
         {
             DecryptionAlgorithm = algorithm;
             DecryptionKey = key;
+            Input = input.ToLower();
+            Language = language;
+        }
+
+        public Decrypt(string algorithm, TextBox[,] textBoxes, string input, string language)
+        {
+            DecryptionAlgorithm = algorithm;
+            TextBoxes = textBoxes;
             Input = input.ToLower();
             Language = language;
         }
@@ -34,11 +44,19 @@ namespace Encrypt_Decrypt.VVM.ViewModel
                 return decryptCaesarCipher(decrypt.Language);
 
             }
-            else
+            else if(decrypt.DecryptionAlgorithm == "Polybius cipher")
+            {
+                return decryptPolybiusCipher(decrypt.Language);
+            }
+            else 
                 throw new ArgumentException("This encryption algorithm is not supported");
         }
 
         
+
+
+
+
         private string decryptCaesarCipher(string language) 
         {
             Dictionary<int, char> dict = CreateDictionary(language);
@@ -62,6 +80,23 @@ namespace Encrypt_Decrypt.VVM.ViewModel
             return result;
         }
 
-       
+
+        private string decryptPolybiusCipher(string language)
+        {
+
+            Dictionary<string, char> dict = LanguageOperations.PolybiusDictionaryStringChar(TextBoxes);
+            string result = "";
+
+
+            for (int i = 0; i < Input.Length; i+=2)
+            {
+                result += dict[$"{Input[i]}{Input[i + 1]}"];
+            }
+
+            return result;
+        }
+
+
+
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Encrypt_Decrypt.VVM.ViewModel
 {
@@ -151,6 +152,38 @@ namespace Encrypt_Decrypt.VVM.ViewModel
 
         }
 
+        public static Dictionary<char, string> PolybiusDictionary(TextBox[,] textBoxes)
+        {
+            var dict = new Dictionary<char, string>();
+
+            for (int i = 0; i < textBoxes.GetLength(0); i++)
+            {
+                for (int j = 0; j < textBoxes.GetLength(1); j++)
+                {
+                    // +1 for i and j because first letter in cipher starts at index 11
+                    dict.Add(Convert.ToChar(textBoxes[i, j].Text), $"{i + 1}{j + 1}");
+                }
+            }
+
+            return dict;
+        }
+
+
+        public static Dictionary<string, char> PolybiusDictionaryStringChar(TextBox[,] textBoxes)
+        {
+            var dict = new Dictionary<string, char>();
+
+            for (int i = 0; i < textBoxes.GetLength(0); i++)
+            {
+                for (int j = 0; j < textBoxes.GetLength(1); j++)
+                {
+                    // +1 for i and j because first letter in cipher starts at index 11
+                    dict.Add($"{i + 1}{j + 1}",Convert.ToChar(textBoxes[i, j].Text));
+                }
+            }
+
+            return dict;
+        }
 
         public static (int x, int y) GetClosestMultipliers(string language)
         {
