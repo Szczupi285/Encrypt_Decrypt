@@ -35,7 +35,7 @@ namespace Encrypt_Decrypt.VVM.ViewModel
 
         }
 
-        public static void TextBox_PreviewTextInputEnglish(object sender, TextCompositionEventArgs e)
+        public static void TextBox_PreviewTextInputPolybiusEnglish(object sender, TextCompositionEventArgs e)
         {
             string regex = @"^[abcdefghiklmnopqrstuwvxyz]$";
             if (Regex.IsMatch(e.Text, regex))
@@ -46,8 +46,19 @@ namespace Encrypt_Decrypt.VVM.ViewModel
                 e.Handled = true;
 
         }
+        public static void TextBox_PreviewTextInputEnglish(object sender, TextCompositionEventArgs e)
+        {
+            string regex = @"^[a-z]$";
+            if (Regex.IsMatch(e.Text, regex))
+            {
 
-        
+            }
+            else
+                e.Handled = true;
+
+        }
+
+
 
 
     }

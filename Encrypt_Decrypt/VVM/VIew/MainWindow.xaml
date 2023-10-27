@@ -9,6 +9,7 @@
     <Grid>
         <ContentControl x:Name="CaesarsKeyControl" Panel.ZIndex="1" />
         <ContentControl x:Name="PolybiusKeyControl" Panel.ZIndex="1" />
+        <ContentControl x:Name="HomophonicKeyControl" Panel.ZIndex="1" />
 
         <StackPanel>
             
@@ -43,6 +44,7 @@
             <ComboBox Name="comboBoxEncrypt" Grid.Column="2" Width="200" HorizontalAlignment="Left" Margin="100,10,0,10">
                     <ComboBoxItem Content="Caesar cipher" />
                     <ComboBoxItem Content="Polybius cipher" />
+                    <ComboBoxItem Content="Homophonic cipher" />
             </ComboBox>
 
             <ComboBox Name="comboBoxLangEncrypt" Grid.Column="2" Width="200" HorizontalAlignment="Center" Margin="0,10,0,10">
@@ -71,7 +73,8 @@
 
             <ComboBox Name="comboBoxDecrypt" Grid.Column="2" Width="200" HorizontalAlignment="Left" Margin="100,10,0,10">
                 <ComboBoxItem Content="Caesar cipher" />
-                 <ComboBoxItem Content="Polybius cipher" />
+                <ComboBoxItem Content="Polybius cipher" />
+                <ComboBoxItem Content="Homophonic cipher" />
             </ComboBox>
             
             <ComboBox Name="comboBoxLangDecrypt" Grid.Column="2" Width="200" HorizontalAlignment="Center" Margin="0,10,0,10">

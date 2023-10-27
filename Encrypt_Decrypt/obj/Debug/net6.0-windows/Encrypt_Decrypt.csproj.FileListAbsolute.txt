@@ -23,3 +23,5 @@ E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\VVM\VIew\
 E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\VVM\VIew\CaesarKey.baml
 E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\VVM\VIew\PolybiusKey.g.cs
 E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\VVM\VIew\PolybiusKey.baml
+E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\VVM\VIew\HomophonicKey.g.cs
+E:\repository\Encrypt_Decrypt\Encrypt_Decrypt\obj\Debug\net6.0-windows\VVM\VIew\HomophonicKey.baml

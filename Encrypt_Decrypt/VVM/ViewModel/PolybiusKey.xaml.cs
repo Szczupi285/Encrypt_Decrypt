@@ -43,7 +43,17 @@ namespace Encrypt_Decrypt.VVM.ViewModel
             RowDefinition rowDefinition = new RowDefinition();
             rowDefinition.Height = GridLength.Auto;
 
-            (int, int) multipliers = LanguageOperations.GetClosestMultipliers(mainWindow.language);
+            // polybius cipher as an exception has other alhpabet where j is threated as i
+            string lang = "";
+
+            if (mainWindow.language == "english")
+                lang = "PolybiusEnglish";
+            else
+                lang = mainWindow.language;
+
+
+
+            (int, int) multipliers = LanguageOperations.GetClosestMultipliers(lang);
 
             TextBoxes = new TextBox[multipliers.Item1, multipliers.Item2];
            
@@ -111,7 +121,7 @@ namespace Encrypt_Decrypt.VVM.ViewModel
                             else if(mainWindow.language == "polishXVQ")
                                 textBox.PreviewTextInput += InputValidation.TextBox_PreviewTextInputPolishXVQ;
                             else if(mainWindow.language == "english")
-                                textBox.PreviewTextInput += InputValidation.TextBox_PreviewTextInputEnglish;
+                                textBox.PreviewTextInput += InputValidation.TextBox_PreviewTextInputPolybiusEnglish;
 
 
                             // store the reference of a current textbox in 2d array of textboxes
@@ -145,7 +155,7 @@ namespace Encrypt_Decrypt.VVM.ViewModel
             bool isFilled = false;
 
            foreach(TextBox s in TextBoxes)
-            {
+           {
                 if (String.IsNullOrEmpty(s.Text))
                 {
                     isFilled = false;
@@ -154,7 +164,7 @@ namespace Encrypt_Decrypt.VVM.ViewModel
                 else
                     isFilled = true;
                    
-        }
+           }   
 
 
 
@@ -166,6 +176,7 @@ namespace Encrypt_Decrypt.VVM.ViewModel
                 mainWindow.input, mainWindow.language);
                 mainWindow.Result.Text = Polybius.performEncryption(Polybius);
                 mainWindow.PolybiusKeyControl.Content = null;
+                
             }
             else if(isFilled == true)
             {

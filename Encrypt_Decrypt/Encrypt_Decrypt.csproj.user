@@ -13,9 +13,15 @@
     <Compile Update="VVM\ViewModel\PolybiusKey.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="VVM\ViewModel\HomophonicKey.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="VVM\VIew\CaesarKey.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="VVM\VIew\HomophonicKey.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="VVM\VIew\MainWindow.xaml">

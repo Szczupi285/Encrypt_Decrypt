@@ -25,6 +25,8 @@ namespace Encrypt_Decrypt
 
         private PolybiusKey polybiusKey;
 
+        private HomophonicKey homophonicKey;
+
         public string? input;
 
         public string? Algorithm;
@@ -37,6 +39,7 @@ namespace Encrypt_Decrypt
             InitializeComponent();
             caesarKey = new CaesarKey();
             polybiusKey = new PolybiusKey();
+            homophonicKey = new HomophonicKey();
         }
 
         public void hide()
@@ -62,11 +65,17 @@ namespace Encrypt_Decrypt
 
                 if (Algorithm == "Caesar cipher")
                     CaesarsKeyControl.Content = caesarKey;
-                if (Algorithm == "Polybius cipher")
+                else if (Algorithm == "Polybius cipher")
                 {
                     PolybiusKeyControl.Content = polybiusKey;
                     polybiusKey.GeneratePolybiusSquare();
                 }
+                else if(Algorithm == "Homophonic cipher")
+                {
+                    HomophonicKeyControl.Content = homophonicKey;
+                    homophonicKey.InitializeProperties();
+                }
+
             }
             else
             { }
@@ -98,11 +107,13 @@ namespace Encrypt_Decrypt
 
                 if (Algorithm == "Caesar cipher")
                     CaesarsKeyControl.Content = caesarKey;
-                if (Algorithm == "Polybius cipher")
+                else if (Algorithm == "Polybius cipher")
                 {
                     PolybiusKeyControl.Content = polybiusKey;
                     polybiusKey.GeneratePolybiusSquare();
                 }
+                else if (Algorithm == "Homophonic cipher")
+                    HomophonicKeyControl.Content = homophonicKey;
             }
             else 
             { }

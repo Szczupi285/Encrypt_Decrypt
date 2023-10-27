@@ -42,6 +42,7 @@ namespace Encrypt_Decrypt.VVM.ViewModel
             if (decrypt.DecryptionAlgorithm == "Caesar cipher")
             {
                 return decryptCaesarCipher(decrypt.Language);
+                
 
             }
             else if(decrypt.DecryptionAlgorithm == "Polybius cipher")
