@@ -28,7 +28,7 @@ namespace Encrypt_Decrypt.VVM.ViewModel
         {
             EncryptionAlgorithm = algorithm;
             EncryptionKey = key;
-            Input = input.ToLower();
+            Input = input.ToLower().Replace(" ", "");
             Language = language;
         }
 
@@ -36,7 +36,7 @@ namespace Encrypt_Decrypt.VVM.ViewModel
         {
             EncryptionAlgorithm = algorithm;
             TextBoxes = textBoxes;
-            Input = input.ToLower();
+            Input = input.ToLower().Replace(" ", "");
             Language = language;
         }
 
@@ -89,7 +89,13 @@ namespace Encrypt_Decrypt.VVM.ViewModel
             Dictionary<char, string> dict = LanguageOperations.PolybiusDictionary(TextBoxes);
             string result = "";
 
-            foreach(char letter in Input)
+            string input = "";
+            if (language == "english")
+                input = Input.Replace('j', 'i');
+            else
+                input = Input;
+
+            foreach(char letter in input)
             {
                 result += dict[letter];
             }

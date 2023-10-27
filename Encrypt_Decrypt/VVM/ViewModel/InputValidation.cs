@@ -37,7 +37,7 @@ namespace Encrypt_Decrypt.VVM.ViewModel
 
         public static void TextBox_PreviewTextInputEnglish(object sender, TextCompositionEventArgs e)
         {
-            string regex = @"^[a-z]$";
+            string regex = @"^[abcdefghiklmnopqrstuwvxyz]$";
             if (Regex.IsMatch(e.Text, regex))
             {
 

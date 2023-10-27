@@ -13,7 +13,7 @@ namespace Encrypt_Decrypt.VVM.ViewModel
 
         public const int polishLetterCount = 32;
         public const int polishXVQLetterCount = 35;
-        public const int englishLetterCount = 26;
+        public const int englishLetterCount = 25;
 
         /// <summary>
         /// Creates a dictionary with integer keys and character values based on the specified type.
@@ -23,6 +23,7 @@ namespace Encrypt_Decrypt.VVM.ViewModel
         /// - "polish": Creates a Polish dictionary. <br></br>
         /// - "polishXVQ": Creates a Polish dictionary with 'X', 'V', and 'Q' appended to the end. <br></br>
         /// - "english": Creates an English dictionary. <br></br>
+        /// - In english 'j' is absent and i is threated like both i and j<br></br>
         /// </param>
         /// <returns>A dictionary with the specified key-value pairs.</returns>
         public Dictionary<int, char> CreateDictionary(string type)
@@ -126,23 +127,22 @@ namespace Encrypt_Decrypt.VVM.ViewModel
                     {7, 'g'},
                     {8, 'h'},
                     {9, 'i'},
-                    {10, 'j'},
-                    {11, 'k'},
-                    {12, 'l'},
-                    {13, 'm'},
-                    {14, 'n'},
-                    {15, 'o'},
-                    {16, 'p'},
-                    {17, 'q'},
-                    {18, 'r'},
-                    {19, 's'},
-                    {20, 't'},
-                    {21, 'u'},
-                    {22, 'v'},
-                    {23, 'w'},
-                    {24, 'x'},
-                    {25, 'y'},
-                    {26, 'z'},
+                    {10, 'k'},
+                    {11, 'l'},
+                    {12, 'm'},
+                    {13, 'n'},
+                    {14, 'o'},
+                    {15, 'p'},
+                    {16, 'q'},
+                    {17, 'r'},
+                    {18, 's'},
+                    {29, 't'},
+                    {20, 'u'},
+                    {21, 'v'},
+                    {22, 'w'},
+                    {23, 'x'},
+                    {24, 'y'},
+                    {25, 'z'},
                 };
 
                 return dict;
@@ -178,7 +178,7 @@ namespace Encrypt_Decrypt.VVM.ViewModel
                 for (int j = 0; j < textBoxes.GetLength(1); j++)
                 {
                     // +1 for i and j because first letter in cipher starts at index 11
-                    dict.Add($"{i + 1}{j + 1}",Convert.ToChar(textBoxes[i, j].Text));
+                    dict.Add($"{i + 1}{j + 1}", Convert.ToChar(textBoxes[i, j].Text));
                 }
             }
 

@@ -23,7 +23,7 @@ namespace Encrypt_Decrypt.VVM.ViewModel
         {
             DecryptionAlgorithm = algorithm;
             DecryptionKey = key;
-            Input = input.ToLower();
+            Input = input.ToLower().Replace(" ", "");
             Language = language;
         }
 
@@ -31,7 +31,7 @@ namespace Encrypt_Decrypt.VVM.ViewModel
         {
             DecryptionAlgorithm = algorithm;
             TextBoxes = textBoxes;
-            Input = input.ToLower();
+            Input = input.ToLower().Replace(" ", "");
             Language = language;
         }
 
@@ -61,7 +61,7 @@ namespace Encrypt_Decrypt.VVM.ViewModel
         {
             Dictionary<int, char> dict = CreateDictionary(language);
 
-            int encKey = Convert.ToInt32(DecryptionKey);
+            int decKey = Convert.ToInt32(DecryptionKey);
 
             char[] letters = Input.Replace(" ", "").ToCharArray();
             string result = "";
@@ -69,12 +69,16 @@ namespace Encrypt_Decrypt.VVM.ViewModel
             foreach (char letter in letters)
             {
                 int key = dict.First(pair => pair.Value == letter).Key;
+                int keyAfterChange = (key - decKey) % dict.Count;
 
                 // if modulo returns 0 that means the letter did a whole loop and is itself again
-                if ((key - encKey) % dict.Count == 0)
+                if (keyAfterChange == 0)
                     result += dict[dict.Count];
+                else if(keyAfterChange < 0)
+                    result += dict[dict.Count + keyAfterChange];
                 else
-                    result += dict[(key - encKey) % dict.Count];
+                    result += dict[keyAfterChange];
+
             }
 
             return result;
@@ -87,10 +91,15 @@ namespace Encrypt_Decrypt.VVM.ViewModel
             Dictionary<string, char> dict = LanguageOperations.PolybiusDictionaryStringChar(TextBoxes);
             string result = "";
 
+            string input = "";
+            if (language == "english")
+                input = Input.Replace('j', 'i');
+            else
+                input = Input;
 
-            for (int i = 0; i < Input.Length; i+=2)
+            for (int i = 0; i < input.Length; i+=2)
             {
-                result += dict[$"{Input[i]}{Input[i + 1]}"];
+                result += dict[$"{input[i]}{input[i + 1]}"];
             }
 
             return result;

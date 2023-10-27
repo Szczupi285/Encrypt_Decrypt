@@ -154,7 +154,7 @@ namespace Encrypt_Decrypt.VVM.ViewModel
                 else
                     isFilled = true;
                    
-            }
+        }
 
 
 
