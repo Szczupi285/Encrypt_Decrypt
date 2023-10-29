@@ -113,7 +113,10 @@ namespace Encrypt_Decrypt
                     polybiusKey.GeneratePolybiusSquare();
                 }
                 else if (Algorithm == "Homophonic cipher")
+                {
                     HomophonicKeyControl.Content = homophonicKey;
+                    homophonicKey.InitializeProperties();
+                }
             }
             else 
             { }

@@ -57,6 +57,18 @@ namespace Encrypt_Decrypt.VVM.ViewModel
                 e.Handled = true;
 
         }
+        public static void TextBox_PreviewTextInputHomophonic(object sender, TextCompositionEventArgs e)
+        {
+            string regex = @"^[1-9]+$";
+            if (Regex.IsMatch(e.Text, regex))
+            {
+
+            }
+            else
+                e.Handled = true;
+
+        }
+
 
 
 

@@ -13,6 +13,10 @@ namespace Encrypt_Decrypt.VVM.ViewModel
         private string DecryptionAlgorithm { get; }
 
         private string DecryptionKey { get; }
+        private Dictionary<char, List<int>> HomophonicKeyEnc { get; }
+
+        private Dictionary<string, char> HomophonicKeyDec { get; }
+
 
         private TextBox[,] TextBoxes { get; }
         private string Input { get; }
@@ -35,20 +39,32 @@ namespace Encrypt_Decrypt.VVM.ViewModel
             Language = language;
         }
 
+        public Decrypt(string algorithm, Dictionary<char, List<int>> homophonicKeyEnc, string input, string language)
+        {
+            DecryptionAlgorithm = algorithm;
+            HomophonicKeyEnc = homophonicKeyEnc;
+            Input = input.ToLower().Replace(" ", "");
+            Language = language;
+        }
+
+        public Decrypt(string algorithm, Dictionary<string, char> homophonicKeyDec, string input, string language)
+        {
+            DecryptionAlgorithm = algorithm;
+            HomophonicKeyDec = homophonicKeyDec;
+            Input = input.ToLower().Replace(" ", "");
+            Language = language;
+        }
+
 
 
         public string performDecryption(Decrypt decrypt)
         {
             if (decrypt.DecryptionAlgorithm == "Caesar cipher")
-            {
                 return decryptCaesarCipher(decrypt.Language);
-                
-
-            }
             else if(decrypt.DecryptionAlgorithm == "Polybius cipher")
-            {
                 return decryptPolybiusCipher(decrypt.Language);
-            }
+            else if (decrypt.DecryptionAlgorithm == "Homophonic cipher")
+                return decryptHomophonicCipher();
             else 
                 throw new ArgumentException("This encryption algorithm is not supported");
         }
@@ -106,6 +122,25 @@ namespace Encrypt_Decrypt.VVM.ViewModel
             return result;
         }
 
+        private string decryptHomophonicCipher()
+        {
+          
+
+            string result = "";
+
+            for (int i = 0; i < Input.Length; i+=3)
+            {
+                if(HomophonicKeyDec.ContainsKey($"{Input[i]}{Input[i + 1]}{Input[i + 2]}"))
+                    result += HomophonicKeyDec[$"{Input[i]}{Input[i + 1]}{Input[i + 2]}"];
+                else
+                {
+                    result = "Wrong Key";
+                    break;
+                }
+
+            }
+            return result;
+        }
 
 
     }

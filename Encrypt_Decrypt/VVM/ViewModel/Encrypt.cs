@@ -6,6 +6,7 @@ using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using Encrypt_Decrypt.VVM.ViewModel;
 
 namespace Encrypt_Decrypt.VVM.ViewModel
 {
@@ -13,10 +14,12 @@ namespace Encrypt_Decrypt.VVM.ViewModel
     internal class Encrypt : LanguageOperations
     {
         private string EncryptionAlgorithm { get; }
-        
+
         private string EncryptionKey { get; }
 
         private TextBox[,] TextBoxes { get; }
+
+        private Dictionary<char, List<int>> HomophonicKey { get; }
 
         private string Input { get; }
 
@@ -40,19 +43,25 @@ namespace Encrypt_Decrypt.VVM.ViewModel
             Language = language;
         }
 
+        public Encrypt(string algorithm, Dictionary<char, List<int>> homophonicKey, string input, string language)
+        {
+            EncryptionAlgorithm = algorithm;
+            HomophonicKey = homophonicKey;
+            Input = input.ToLower().Replace(" ", "");
+            Language = language;
+        }
+
 
 
         public string performEncryption(Encrypt encrypt)
         {
-            if(encrypt.EncryptionAlgorithm == "Caesar cipher")
-            {
+            if (encrypt.EncryptionAlgorithm == "Caesar cipher")
                 return encryptCaesarCipher(encrypt.Language);
-            }
-            else if(encrypt.EncryptionAlgorithm == "Polybius cipher")
-            {
+            else if (encrypt.EncryptionAlgorithm == "Polybius cipher")
                 return encryptPolybiusCipher(encrypt.Language);
-            }
-            else 
+            else if (encrypt.EncryptionAlgorithm == "Homophonic cipher")
+                return encryptHomophonicCipher();
+            else
                 throw new ArgumentException("This encryption algorithm is not supported");
         }
 
@@ -103,6 +112,29 @@ namespace Encrypt_Decrypt.VVM.ViewModel
             return result;
         }
 
+        // language right here is not required as we only allow the
+        // current language characters in view
+        private string encryptHomophonicCipher()
+        {
+
+
+            Random random = new Random();
+
+            string result = "";
+
+            foreach(char letter in Input)
+            {
+                // create temporary list to store all homophonics for current letter
+                List<int> temp = HomophonicKey[letter];
+
+                int randomNum = random.Next(0, temp.Count - 1);
+                result += temp[randomNum];
+                
+            }
+            return result;
+
+
+        }
 
 
     }
